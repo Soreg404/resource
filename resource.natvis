@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AutoVisualizer xmlns="http://schemas.microsoft.com/vstudio/debugger/natvis/2010">
+  
+  <Type Name="Resource&lt;*&gt;">
+    <DisplayString Condition="_ref_info">[{_ref_info->num_references}] = {_type}</DisplayString>
+    <DisplayString Condition="!_ref_info">[-] = {_type}</DisplayString>
+    <Expand>
+      <ExpandedItem>_type</ExpandedItem>
+    </Expand>
+  </Type>
+  
+  <Type Name="ResourceReference&lt;*&gt;">
+    <DisplayString Condition="!_ref_info">empty</DisplayString>
+    <DisplayString Condition="_ref_info &amp;&amp; !_ref_info->exists">[{_ref_info->num_references}] -&gt; deleted</DisplayString>
+    <DisplayString Condition="_ref_info &amp;&amp; _ref_info->exists">[{_ref_info->num_references}] -&gt; {*_type_ptr}</DisplayString>
+    <Expand>
+      <ExpandedItem Condition="_ref_info &amp;&amp; _ref_info->exists">_type_ptr</ExpandedItem>
+    </Expand>
+  </Type>
+
+</AutoVisualizer>
